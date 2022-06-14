@@ -42,13 +42,12 @@ class Property(TimeStampedUUIDModel):
         COMMERCIAL = "Commercial", _("Commercial")
         OTHER = "Other", _("Other")
 
-    user = (
-        models.ForeignKey(
+    user = models.ForeignKey(
             User,
             verbose_name=_("Agent,Seller or Buyer"),
             related_name="agent_buyer",
             on_delete=models.DO_NOTHING,
-        ),
+        
     )
     title = models.CharField(verbose_name=_("Property Title"), max_length=250)
     slug = AutoSlugField(populate_from="title", unique=True, always_update=True)
@@ -171,7 +170,7 @@ class Property(TimeStampedUUIDModel):
 
     def save(self, *args, **kwargs):
         self.title = str.title(self.title)
-        self.description = str.description(self.description)
+        self.description = str.capitalize(self.description)
         self.ref_code = "".join(
             random.choices(string.ascii_uppercase + string.digits, k=10)
         )
