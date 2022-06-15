@@ -1,5 +1,3 @@
-from django.conf import settings
-from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 # ============================================================================ #
@@ -16,7 +14,8 @@ urlpatterns = [
     path("api/v1/ratings/", include("apps.ratings.urls")),
     path("api/v1/enquiries/", include("apps.enquiries.urls")),
     
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
 
 
 
