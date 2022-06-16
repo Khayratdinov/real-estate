@@ -1,5 +1,6 @@
 from pathlib import Path
 import environ
+from datetime import timedelta
 
 env = environ.Env(
     DEBUG=(bool, False),
@@ -145,7 +146,7 @@ REST_FRAMEWORK = {
     }
 
 
-from datetime import timedelta
+
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer', 'JWT'),
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),

@@ -5,8 +5,8 @@ from django.dispatch import receiver
 # ============================================================================ #
 import logging
 # ============================================================================ #
-from config.settings.base import AUTH_USER_MODEL
 from apps.profiles.models import Profile
+from config.settings.base import AUTH_USER_MODEL
 
 
 
