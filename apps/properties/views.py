@@ -1,17 +1,20 @@
+import logging
+
+import django_filters
 from django.db.models import query
 from django_filters.rest_framework import DjangoFilterBackend
-import django_filters
 # ============================================================================ #
 from rest_framework import filters, generics, permissions, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.views import APIView
-import logging
+
 # ============================================================================ #
 from .exceptions import PropertyNotFound
 from .models import Property, PropertyViews
 from .pagination import PropertyPagination
-from .serializers import (PropertyCreateSerializer, PropertySerializer,PropertyViewSerializer)
+from .serializers import (PropertyCreateSerializer, PropertySerializer,
+                          PropertyViewSerializer)
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +41,6 @@ class PropertyFilter(django_filters.FilterSet):
         fields = ["advert_type", "property_type", "price"]
 
 
-
 # ======================== LIST ALL PROPERTIES APIVIEW ======================= #
 
 
@@ -55,7 +57,6 @@ class ListAllPropertiesAPIView(generics.ListAPIView):
     filterset_class = PropertyFilter
     search_fields = ["country", "city"]
     ordering_fields = ["created_at"]
-
 
 
 # ====================== LIST AGENTS PROPERTIES APIVIEW ====================== #
@@ -80,14 +81,12 @@ class ListAgentsPropertiesAPIView(generics.ListAPIView):
         return queryset
 
 
-
 # ========================== PROPERTY VIEWS APIVIEW ========================== #
 
 
 class PropertyViewsAPIView(generics.ListAPIView):
     serializer_class = PropertyViewSerializer
     queryset = PropertyViews.objects.all()
-
 
 
 # =========================== PROPERTY DETAIL VIEW =========================== #
@@ -112,7 +111,6 @@ class PropertyDetailView(APIView):
         serializer = PropertySerializer(property, context={"request": request})
 
         return Response(serializer.data, status=status.HTTP_200_OK)
-
 
 
 # ========================= UPDATE PROPERTY API VIEW ========================= #
@@ -140,7 +138,6 @@ def update_property_api_view(request, slug):
         return Response(serializer.data)
 
 
-
 # ========================= CREATE PROPERTY API VIEW ========================= #
 
 
@@ -160,7 +157,6 @@ def create_property_api_view(request):
         return Response(serializer.data)
 
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 
 # ========================= DELETE PROPERTY API VIEW ========================= #
@@ -194,7 +190,6 @@ def delete_property_api_view(request, slug):
 # =========================== UPLOAD PROPERTY IMAGE ========================== #
 
 
-
 @api_view(["POST"])
 def uploadPropertyImage(request):
     data = request.data
@@ -208,7 +203,6 @@ def uploadPropertyImage(request):
     property.photo4 = request.FILES.get("photo4")
     property.save()
     return Response("Image(s) uploaded")
-
 
 
 # ========================== PROPERTY SEARCH APIVIEW ========================= #

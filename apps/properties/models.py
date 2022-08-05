@@ -1,16 +1,16 @@
-from django.contrib.auth import get_user_model
-from django.core.validators import MinValueValidator
-from django.utils.translation import gettext_lazy as _
-from django_countries.fields import CountryField
-from django.db import models
 # ============================================================================ #
 import random
 import string
+
 from autoslug import AutoSlugField
+from django.contrib.auth import get_user_model
+from django.core.validators import MinValueValidator
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+from django_countries.fields import CountryField
+
 # ============================================================================ #
 from apps.common.models import TimeStampedUUIDModel
-
-
 
 User = get_user_model()
 
@@ -24,6 +24,7 @@ class PropertyPublishedManager(models.Manager):
             .get_queryset()
             .filter(published_status=True)
         )
+
 
 # ================================= PROPERTY ================================= #
 
@@ -43,11 +44,10 @@ class Property(TimeStampedUUIDModel):
         OTHER = "Other", _("Other")
 
     user = models.ForeignKey(
-            User,
-            verbose_name=_("Agent,Seller or Buyer"),
-            related_name="agent_buyer",
-            on_delete=models.DO_NOTHING,
-        
+        User,
+        verbose_name=_("Agent,Seller or Buyer"),
+        related_name="agent_buyer",
+        on_delete=models.DO_NOTHING,
     )
     title = models.CharField(verbose_name=_("Property Title"), max_length=250)
     slug = AutoSlugField(populate_from="title", unique=True, always_update=True)
@@ -66,20 +66,12 @@ class Property(TimeStampedUUIDModel):
         default="KE",
         blank_label="(select country)",
     )
-    city = models.CharField(
-        verbose_name=_("City"), 
-        max_length=180, 
-        default="Nairobi"
-        )
+    city = models.CharField(verbose_name=_("City"), max_length=180, default="Nairobi")
     postal_code = models.CharField(
-        verbose_name=_("Postal Code"), 
-        max_length=100, 
-        default="140"
+        verbose_name=_("Postal Code"), max_length=100, default="140"
     )
     street_address = models.CharField(
-        verbose_name=_("Street Address"), 
-        max_length=150, 
-        default="KG8 Avenue"
+        verbose_name=_("Street Address"), max_length=150, default="KG8 Avenue"
     )
     property_number = models.IntegerField(
         verbose_name=_("Property Number"),
@@ -87,10 +79,7 @@ class Property(TimeStampedUUIDModel):
         default=112,
     )
     price = models.DecimalField(
-        verbose_name=_("Price"), 
-        max_digits=8, 
-        decimal_places=2, 
-        default=0.0
+        verbose_name=_("Price"), max_digits=8, decimal_places=2, default=0.0
     )
     tax = models.DecimalField(
         verbose_name=_("Property Tax"),
@@ -100,18 +89,12 @@ class Property(TimeStampedUUIDModel):
         help_text="15% property tax charged",
     )
     plot_area = models.DecimalField(
-        verbose_name=_("Plot Area(m^2)"), 
-        max_digits=8, 
-        decimal_places=2, 
-        default=0.0
+        verbose_name=_("Plot Area(m^2)"), max_digits=8, decimal_places=2, default=0.0
     )
     total_floors = models.IntegerField(verbose_name=_("Number of floors"), default=0)
     bedrooms = models.IntegerField(verbose_name=_("Bedrooms"), default=1)
     bathrooms = models.DecimalField(
-        verbose_name=_("Bathrooms"), 
-        max_digits=4, 
-        decimal_places=2, 
-        default=1.0
+        verbose_name=_("Bathrooms"), max_digits=4, decimal_places=2, default=1.0
     )
     advert_type = models.CharField(
         verbose_name=_("Advert Type"),
@@ -128,10 +111,7 @@ class Property(TimeStampedUUIDModel):
     )
 
     cover_photo = models.ImageField(
-        verbose_name=_("Main Photo"), 
-        default="/house_sample.jpg", 
-        null=True, 
-        blank=True
+        verbose_name=_("Main Photo"), default="/house_sample.jpg", null=True, blank=True
     )
     photo1 = models.ImageField(
         default="/interior_sample.jpg",

@@ -4,10 +4,10 @@ from djoser.serializers import UserCreateSerializer
 # ============================================================================ #
 from phonenumber_field.serializerfields import PhoneNumberField
 from rest_framework import serializers
+
 # ============================================================================ #
 
 User = get_user_model()
-
 
 
 # ============================== USERSERIALIZER ============================== #
@@ -52,7 +52,6 @@ class UserSerializer(serializers.ModelSerializer):
         if instance.is_superuser:
             representation["admin"] = True
         return representation
-
 
 
 # =========================== CREATEUSERSERIALIZER =========================== #

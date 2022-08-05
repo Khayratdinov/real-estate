@@ -1,8 +1,10 @@
 from rest_framework.exceptions import APIException
+
 # ============================================================================ #
 
 
 # ============================== PROFILE NOT FOUND ============================= #
+
 
 class ProfileNotFound(APIException):
     status_code = 404
@@ -10,6 +12,7 @@ class ProfileNotFound(APIException):
 
 
 # ============================== NOT YOUR PROFILE ============================== #
+
 
 class NotYourProfile(APIException):
     status_code = 403

@@ -1,8 +1,7 @@
 import json
+
 # ============================================================================ #
 from rest_framework.renderers import JSONRenderer
-
-
 
 # =========================== PROFILE JSON RENDERER ========================== #
 

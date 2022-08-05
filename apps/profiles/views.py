@@ -1,14 +1,15 @@
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
 # ============================================================================ #
 from .exceptions import NotYourProfile, ProfileNotFound
 from .models import Profile
 from .renderers import ProfileJSONRenderer
 from .serializers import ProfileSerializer, UpdateProfileSerializer
 
-
 # ============================= AGENT LISTAPIVIEW ============================ #
+
 
 class AgentListAPIView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -36,6 +37,7 @@ class TopAgentsListAPIView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     queryset = Profile.objects.filter(top_agent=True)
     serializer_class = ProfileSerializer
+
 
 # ============================ GET PROFILE APIVIEW =========================== #
 

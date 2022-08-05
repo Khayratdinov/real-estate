@@ -1,14 +1,13 @@
 from django.contrib import admin
+
 # ============================================================================ #
 from .models import Rating
-
 
 # ================================ RATINGADMIN =============================== #
 
 
 class RatingAdmin(admin.ModelAdmin):
     list_display = ["rater", "agent", "rating"]
-
 
 
 # ============================================================================ #
