@@ -33,7 +33,41 @@ DATABASES = {
         'NAME': env("POSTGRES_DB"),
         'USER': env("POSTGRES_USER"),
         'PASSWORD': env("POSTGRES_PASSWORD"),
-        'HOST': env("POSTGRES_HOST"),
+        "HOST": env("POSTGRES_HOST"),
         'PORT': env("POSTGRES_PORT"),
     }
 }
+
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': "django.db.backends.postgresql",
+#         'NAME': "real-estate",
+#         'USER': "postgres",
+#         'PASSWORD': "admin12345",
+#         'HOST': "postgres-db",
+#         'PORT': "5432",
+#     }
+# }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'estate',                      
+#         'USER': 'postgres',
+#         'PASSWORD': 'admin12345',
+#         'HOST': '',
+#         'PORT': '5432',
+#     }
+# }

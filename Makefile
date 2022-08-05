@@ -33,10 +33,17 @@ down-v:
 	docker compose down -v
 
 volume:
-	docker volume inspect estate-src_postgres_data
+	docker volume inspect full_app_postgres_data
 
 estate-db:
-	docker compose exec postgres-db psql --username=admin --dbname=estate
+	docker compose exec postgres-db psql --username=nurpolat --dbname=real-estate
+
+
+# db list:      \list
+# db connect:   \connect
+# table list:   \dt
+# Exit:         \q
+
 
 test:
 	docker compose exec api pytest -p no:warnings --cov=.

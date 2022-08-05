@@ -57,7 +57,6 @@ class GetProfileAPIView(APIView):
 class UpdateProfileAPIView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     renderer_classes = [ProfileJSONRenderer]
-
     serializer_class = UpdateProfileSerializer
 
     def patch(self, request, username):
