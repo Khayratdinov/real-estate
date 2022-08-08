@@ -4,4 +4,4 @@ set -o errexit
 
 set -o nounset
 
-watchmedo auto-restart -d estate/ -p "*.py" -- celery worker --app=estate --loglevel=info
+watchmedo auto-restart -d config/ -p "*.py" -- celery -A config.celery worker  --loglevel=info
