@@ -7,7 +7,7 @@ from .base import *
 #                                     EMAIL                                    #
 # ============================================================================ #
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = "djcelery_email.backends.CeleryEmailBackend"
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_USE_TLS = True
 EMAIL_PORT = env("EMAIL_PORT")
@@ -65,3 +65,8 @@ DATABASES = {
 #         'PORT': '5432',
 #     }
 # }
+
+
+CELERY_BROKER_URL = env("CELERY_BROKER")
+CELERY_RESULT_BACKEND = env("CELERY_BACKEND")
+CELERY_TIMEZONE = "Asia/Tashkent"
