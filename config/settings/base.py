@@ -19,6 +19,7 @@ DEBUG = env("DEBUG")
 
 # ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ")
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ['http://0.0.0.0:8080']
 
 
 # CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
